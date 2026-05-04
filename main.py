@@ -9,10 +9,14 @@ window = Launcher()
 window.mainloop()
 
 name = window.name
+# name = "Phantom"
+
 
 sock = socket(AF_INET, SOCK_STREAM)
 HOST = window.ip
 PORT = window.port
+# HOST = "localhost"
+# PORT = 8080
 sock.connect((HOST, PORT))
 my_data = list(map(int, sock.recv(64).decode().strip().split(',')))
 my_id = my_data[0]
@@ -69,6 +73,10 @@ while running:
    
     window.fill((255, 255, 255))
     scale = max(0.3, min(50 / player[2], 1.5))
+    # поле
+    # sx = int((0 - player[0]))
+    # sy = int((0 - player[1]))
+    # draw.circle(window, (0, 0, 0), (sx, sy), 2000)
     for p in all_players:
        if p[0] == my_id: continue
        sx = int((p[1] - my_player[0]) * scale + 500)
